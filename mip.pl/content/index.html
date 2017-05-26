@@ -80,7 +80,7 @@
 		<div class="row" id="about">
 			<div class="col-sm-6">
 				<div class="embed embed-responsive embed-responsive-4by3">
-					<div class="embed-responsive-item" id="map">Map goes here</div>
+					<div class="embed-responsive-item" id="map-wedding">Map goes here</div>
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -94,17 +94,18 @@
 		<hr class="featurette-divider">
 
 		<!-- Second Featurette -->
-		<div class="featurette" id="services">
-			<img class="featurette-image img-circle img-responsive pull-left"
-				src="http://placehold.it/500x500">
-			<h2 class="featurette-heading">
-				The Second Heading <span class="text-muted">Is Pretty Cool
-					Too.</span>
-			</h2>
-			<p class="lead">Donec ullamcorper nulla non metus auctor
-				fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-				commodo cursus magna, vel scelerisque nisl consectetur. Fusce
-				dapibus, tellus ac cursus commodo.</p>
+		<div class="row" id="about">
+			<div class="col-sm-6">
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-sm-6">
+				<div class="embed embed-responsive embed-responsive-4by3">
+					<div class="embed-responsive-item" id="map-party">Map goes here</div>
+				</div>
+			</div>
 		</div>
 
 		<hr class="featurette-divider">
@@ -171,16 +172,24 @@
 
 			function initMap() {
 
-				var location = new google.maps.LatLng(50.0875726, 14.4189987);
+				var weddingLocation = new google.maps.LatLng(52.295899, 20.960046);
+				var partyLocation = new google.maps.LatLng(52.253155, 20.871996);
 
-				var mapCanvas = document.getElementById('map');
-				var mapOptions = {
-					center : location,
+				var partyMapOpt = {
+					center : partyLocation,
 					zoom : 16,
 					panControl : false,
 					mapTypeId : google.maps.MapTypeId.ROADMAP
 				}
-				var map = new google.maps.Map(mapCanvas, mapOptions);
+				var weddingMapOpt = {
+						center : weddingLocation,
+						zoom : 16,
+						panControl : false,
+						mapTypeId : google.maps.MapTypeId.ROADMAP
+					}
+				
+				var map = new google.maps.Map(document.getElementById('map-wedding'), weddingMapOpt);
+				var map2 = new google.maps.Map(document.getElementById('map-party'), partyMapOpt);
 
 			}
 

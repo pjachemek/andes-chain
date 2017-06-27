@@ -14,12 +14,12 @@
 <META NAME="ROBOTS" CONTENT="NONE,NOARCHIVE">
 
 <title>mariaipawel.pl</title>
-
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href="css/main.css" rel="stylesheet">
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,6 +52,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="#wedding">Ślub</a></li>
 					<li><a href="#reception">Wesele</a></li>
+					<li><a href="#hotel">Nocleg</a></li>
 					<li><a href="#wishlist">Lista marzeń</a></li>
 					<li><a href="#charity">Charytatywnie</a></li>
 				</ul>
@@ -111,7 +112,7 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="map-container">
-					<h1>Ceremonia zaślubin</h1>
+					<h2 class="featurette-heading">Ślub</h2>
 					<p class="glyphicon glyphicon-globe">
 						<span style="padding: 10px;">Kościół Pokamedulski&nbsp;w
 							Lasku Bielańskim, ul.&nbsp;Dewajtis&nbsp;3, Warszawa</span>
@@ -148,10 +149,26 @@
 		<!-- Second Featurette -->
 		<div class="row">
 			<div class="col-sm-6">
-				<p class="lead">Donec ullamcorper nulla non metus auctor
-					fringilla. Vestibulum id ligula porta felis euismod semper.
-					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-					Fusce dapibus, tellus ac cursus commodo.</p>
+				<h2 class="featurette-heading">Przyjęcie weselne</h2>
+				<p class="glyphicon glyphicon-hand-up">
+					<a href="http://www.krasnodwor.pl"><span style="padding: 10px;">Restauracja
+							Krasnodówr</span></a>
+				</p>
+				<p class="glyphicon glyphicon-transfer">
+					<span style="padding: 10px;">Po Ślubie będzie podstawiony
+						bus dla niezmotoryzowanych Gości</span>
+				</p>
+
+				<div id="reception-form-container">
+					<form>
+						<div class="form-group">
+							<label for="begin-route">Początek trasy:</label> <input
+								type="text" class="form-control" id="begin-route">
+						</div>
+						<button type="submit" class="btn btn-default">Wyznacz
+							trasę</button>
+					</form>
+				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="map-container">
@@ -161,6 +178,23 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="hotel"></div>
+		<hr class="featurette-divider">
+
+		<!-- Third Featurette -->
+		<div class="featurette">
+			<img class="featurette-image img-circle img-responsive pull-right"
+				src="./img/1-hotel.jpg">
+			<h2 class="featurette-heading">Dobre Miejsce</h2>
+			<p class="lead">Dla naszych przyjezdnych Gości przygotowaliśmy
+				nocleg w bezpośrednim sąsiedztwie kościoła.</p>
+			<p class="text-muted">
+				Dobre Miejsce,<br>ul. Dewajtis 3,<br>01-815 Warszawa
+			</p>
+			<p class="text-muted">
+				<a href="http://dobremiejsce.eu"></a>
+			</p>
 		</div>
 		<div id="wishlist"></div>
 		<hr class="featurette-divider">
@@ -211,12 +245,9 @@
 	<!-- jQuery -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 	<!-- Bootstrap Core JavaScript -->
 	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmGnRozsU9iiUNasUgVMmM134pb5FYNLE"></script>

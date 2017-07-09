@@ -2697,9 +2697,10 @@ $api = new PHP_CRUD_API(array(
 	'dbengine'=>'MySQL',
 	'hostname'=>'sql.pjachemek.nazwa.pl',
 	'username'=>'pjachemek',
-	'password'=>'dk*jD4%2',
+	'password'=>'Mysql7&123',
 	'database'=>'pjachemek',
-	'charset'=>'utf8'
+	'charset'=>'utf8',
+	'allow_origin'=>'http://*.mariaipawel.pl'
 ));
 $api->executeCommand();
 

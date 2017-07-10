@@ -54,7 +54,11 @@ footer {
 
 .custom-page-header {
 	padding-bottom: 3px;
+	padding-top: 50px;
 	margin: 50px 5px;
+}
+.extra-padding-top {
+	padding-top: 10px;
 }
 
 @media ( max-width :1200px) {

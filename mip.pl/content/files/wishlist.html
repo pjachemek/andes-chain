@@ -67,7 +67,6 @@
 	<div class="container">
 
 		<div id="wishlist"></div>
-		<div class="featurette-divider"></div>
 
 		<!-- Third Featurette -->
 
@@ -78,28 +77,7 @@
 				wskazówek co do potrzebnych nam lub wymarzonych przez nas rzeczy.
 				Zaglądajcie tu od czasu do czasu, jeżeli nie macie innego
 				superpomysłu.</p>
-			<div class="form-group" id="form-container">
-				<form>
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Nazwa</th>
-									<th>Opis</th>
-									<th>Akcja</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><a href="www.google.com?q=namiot">Namiot</a></td>
-									<td>Dobry namiot</td>
-									<td><button type="submit" class="btn btn-primary">Rezerwuj</button></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-			</div>
+			<div class="form-group" id="form-container">Loading...</div>
 		</div>
 		<hr class="featurette-divider">
 		<!-- Footer -->
@@ -122,7 +100,32 @@
 	<!-- Mustache -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+	<script src="../js/main.js"></script>
 
+	<script id="GiftListTemplate" type="text/mustache">
+				<form>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Nazwa</th>
+									<th>Opis</th>
+									<th>Akcja</th>
+								</tr>
+							</thead>
+							<tbody>
+							{{#mip_lista_prezentow}}
+								<tr>
+									<td><a href="{{LINK}}">{{NAME}}</a></td>
+									<td>{{DESCRIPTION}}</td>
+									<td id="{{ID}}"><button type="button" class="btn btn-primary reserve" {{^ISFREE}}disabled{{/ISFREE}}>Rezerwuj</button></td>
+								</tr>
+							{{/mip_lista_prezentow}}
+							</tbody>
+						</table>
+					</div>
+				</form>
+	</script>
 </body>
 
 </html>

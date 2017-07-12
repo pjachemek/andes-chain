@@ -30,6 +30,7 @@ body {
 
 .featurette {
 	overflow: hidden;
+	padding-top: 50px;
 }
 
 .featurette-image.pull-left {
@@ -54,8 +55,7 @@ footer {
 
 .custom-page-header {
 	padding-bottom: 3px;
-	padding-top: 50px;
-	margin: 50px 5px;
+	margin-top: 60px;
 }
 .extra-padding-top {
 	padding-top: 10px;

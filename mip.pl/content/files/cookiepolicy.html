@@ -12,6 +12,7 @@
 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 <META NAME="GOOGLEBOT" CONTENT="NOARCHIVE">
 <META NAME="ROBOTS" CONTENT="NONE,NOARCHIVE">
+<meta http-equiv="refresh" content="0; url=https://pl.wikipedia.org/wiki/HTTP_cookie" />
 
 <title>mariaipawel.pl > lista życzeń</title>
 <!-- Custom CSS -->
@@ -33,31 +34,7 @@
 	href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-<script>
-	window
-			.addEventListener(
-					"load",
-					function() {
-						window.cookieconsent
-								.initialise({
-									"palette" : {
-										"popup" : {
-											"background" : "#1d8a8a"
-										},
-										"button" : {
-											"background" : "#62ffaa"
-										}
-									},
-									"position" : "bottom-left",
-									"content" : {
-										"message" : "Ten serwis wykorzystuje pliki cookies. Korzystanie z witryny oznacza zgodę na ich zapis lub odczyt wg ustawień przeglądarki.",
-										"dismiss" : "Zgadzam się",
-										"link" : "Dowiedz się więcej",
-										"href" : "/files/cookiepolicy.html"
-									}
-								})
-					});
-</script>
+
 </head>
 
 <body>
@@ -83,7 +60,7 @@
 					<li><a href="../index.html#wedding">Ślub</a></li>
 					<li><a href="../index.html#reception">Wesele</a></li>
 					<li><a href="../index.html#hotel">Nocleg</a></li>
-					<li><a href="#">Lista marzeń</a></li>
+					<li><a href="wishlist.html">Lista marzeń</a></li>
 					<li><a href="../index.html#charity">Charytatywnie</a></li>
 				</ul>
 			</div>
@@ -94,20 +71,6 @@
 
 	<!-- Full Width Image Header -->
 	<div class="container">
-
-		<div id="wishlist"></div>
-
-		<!-- Third Featurette -->
-
-		<div class="featurette">
-			<h2 class="featurette-heading">Jeśli pragniecie podarować nam
-				jakiś upominek będzie nam z tego powodu bardzo miło.</h2>
-			<p class="lead">Wkrótce umieścimy kilka podpowiedzi, pomysłów,
-				wskazówek co do potrzebnych nam lub wymarzonych przez nas rzeczy.
-				Zaglądajcie tu od czasu do czasu, jeżeli nie macie innego
-				superpomysłu.</p>
-			<div class="form-group" id="form-container">Loading...</div>
-		</div>
 		<hr class="featurette-divider">
 		<!-- Footer -->
 		<footer>
@@ -126,38 +89,7 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<!-- Mustache -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
-	<script src="../js/main.js"></script>
 
-	<script id="GiftListTemplate" type="text/mustache">
-				<form>
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Nazwa</th>
-									<th>Opis</th>
-									<th>Akcja</th>
-								</tr>
-							</thead>
-							<tbody>
-							{{#mip_lista_prezentow}}
-								<tr>
-									<td><a href="{{LINK}}">{{NAME}}</a></td>
-									<td>{{DESCRIPTION}}</td>
-									<td id="{{ID}}">
-										<button type="button" class="btn btn-primary btn-md reserve" {{^ISFREE}}disabled{{/ISFREE}}>Rezerwuj</button>
-										<button type="button" class="btn btn-danger btn-md unreserve">Usuń</button>
-									</td>
-								</tr>
-							{{/mip_lista_prezentow}}
-							</tbody>
-						</table>
-					</div>
-				</form>
-	</script>
 </body>
 
 </html>

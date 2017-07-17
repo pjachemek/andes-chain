@@ -48,36 +48,110 @@ function php_crud_api_transform(tables) {
 
 function GiftList(element, template) {
 	var self = this;
-	var url = 'http://www.mariaipawel.pl/cgi/api.php/mip_lista_prezentow';
-	self.edit = function() {
+	var url = '../cgi/api.php/mip_lista_prezentow';
+	self.reserve = function() {
+		if (isCookieSet() == false) {
+			var td = $(this).parent('td');
+			var id = td.attr("id");
+			var reservationsource = 'temporary';
+			var reservationdate = Date.now();
+			var content = '{"ISFREE":0, "RESERVATIONSOURCE": "'
+					+ reservationsource + '", "RESERVATIONDATE":"'
+					+ reservationdate + '"}'
+			if (id !== null) {
+				$.ajax({
+					url : url + '/' + id,
+					type : 'PUT',
+					contentType : 'application/json',
+					data : content,
+					success : self.update
+				});
+				setCookie(id);
+			}
+		} else {
+			alert("Rezerwuj pojedyńczo")
+		}
+	};
+	self.unreserve = function() {
 		var td = $(this).parent('td');
 		var id = td.attr("id");
-		var reservationsource = 'temporary';
-		var reservationdate = Date.now();
-		var content = '{"ISFREE":0, "RESERVATIONSOURCE": "' + reservationsource
-				+ '", "RESERVATIONDATE":"' + reservationdate + '"}'
-		if (id !== null) {
-			$.ajax({
-				url : url + '/' + id,
-				type : 'PUT',
-				contentType : 'application/json',
-				data : content,
-				success : self.update
-			});
+		var check_id = getCookie("mip_cookie");
+		if (check_id == id) {
+			var content = '{"ISFREE":1, "RESERVATIONSOURCE": "", "RESERVATIONDATE":""}'
+			if (id !== null) {
+				$.ajax({
+					url : url + '/' + id,
+					type : 'PUT',
+					contentType : 'application/json',
+					data : content,
+					success : self.update
+				});
+				unsetCookie(id);
+			}
+		} else {
+			alert("Można usunąć tylko swoją rezerwację")
 		}
 	};
 	self.render = function(data) {
 		element.html(Mustache.to_html(template.html(),
 				php_crud_api_transform(data)));
+
+		var id = getCookie("mip_cookie");
+		var elems = document.getElementsByClassName("unreserve");
+		for (var i = 0; i < elems.length; i++) {
+			var parent = $(elems[i]).parent('td');
+			if (parent.attr("id") != id)
+				elems[i].disabled = true;
+		}
+		var elems = document.getElementsByClassName("reserve");
+		for (var i = 0; i < elems.length; i++) {
+			if (isCookieSet() == true)
+				elems[i].disabled = true;
+		}
 	};
 	self.update = function() {
 		$.get(url, self.render);
 	};
 
-	element.on('click', 'button.reserve', self.edit)
+	element.on('click', 'button.reserve', self.reserve)
+	element.on('click', 'button.unreserve', self.unreserve)
 	self.update();
 };
 
 $(function() {
 	new GiftList($('#form-container'), $('#GiftListTemplate'));
 });
+
+function setCookie(cvalue) {
+	var d = new Date(2017, 9, 30, 14, 0, 0, 0);
+	var expires = "expires=" + d.toUTCString();
+	document.cookie = "mip_cookie=" + cvalue + ";" + expires + ";path=/";
+}
+function unsetCookie(cvalue) {
+	var d = new Date(2016, 1, 1, 0, 0, 0, 0);
+	var expires = "expires=" + d.toUTCString();
+	document.cookie = "mip_cookie=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
+
+function isCookieSet() {
+	if (getCookie("mip_cookie") == "") {
+		return false;
+	}
+	return true;
+}

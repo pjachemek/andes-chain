@@ -48,7 +48,7 @@ function php_crud_api_transform(tables) {
 
 function GiftList(element, template) {
 	var self = this;
-	var url = 'http://www.mariaipawel.pl/cgi/api.php/mip_lista_prezentow';
+	var url = '../cgi/api.php/mip_lista_prezentow';
 	self.reserve = function() {
 		if (isCookieSet() == false) {
 			var div = $(this).parent('div');

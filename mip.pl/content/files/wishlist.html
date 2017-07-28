@@ -20,7 +20,6 @@
 <link href="../css/bootstrap.css" rel="stylesheet">
 
 
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -33,6 +32,7 @@
 	href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+
 <script>
 	window
 			.addEventListener(
@@ -83,7 +83,7 @@
 					<li><a href="../index.html#wedding">Ślub</a></li>
 					<li><a href="../index.html#reception">Wesele</a></li>
 					<li><a href="../index.html#hotel">Nocleg</a></li>
-					<li><a href="#">Lista marzeń</a></li>
+					<li><a href="#">Lista prezentów</a></li>
 					<li><a href="../index.html#charity">Charytatywnie</a></li>
 				</ul>
 			</div>
@@ -102,10 +102,11 @@
 		<div class="featurette">
 			<h2 class="featurette-heading">Jeśli pragniecie podarować nam
 				jakiś upominek będzie nam z tego powodu bardzo miło.</h2>
-			<p class="lead">Wkrótce umieścimy kilka podpowiedzi, pomysłów,
-				wskazówek co do potrzebnych nam lub wymarzonych przez nas rzeczy.
-				Zaglądajcie tu od czasu do czasu, jeżeli nie macie innego
-				superpomysłu.</p>
+			<p class="lead">Poniżej znajduje się kilka podpowiedzi prezentów.
+				Jeśli któryś z prezentów wydaje się Wam odpowiedni - zarezerwujcie go.
+				Dzięki temu będziecie mieli pewność, że Wasz prezent będzie
+				niepowtarzalny. Zaglądajcie tu od czasu do czasu, będziemy
+				dodawać rzeczy.</p>
 			<div class="form-group" id="form-container">Loading...</div>
 		</div>
 		<hr class="featurette-divider">
@@ -126,30 +127,36 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<!-- Mustache -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+
 	<script src="../js/main.js"></script>
 
 	<script id="GiftListTemplate" type="text/mustache">
 				<form>
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th>Nazwa</th>
-									<th>Opis</th>
-									<th>Akcja</th>
+									<th class="col-sm-3 col-md-3 col-lg-3">Nazwa</th>
+									<th class="col-sm-5 col-md-5 col-lg-5 hidden-xs">Opis</th>
+									<th class="col-sm-1 col-md-1 col-lg-1">Cena</th>
+									<th class="col-sm-3 col-md-3 col-lg-3">Akcja</th>
 								</tr>
 							</thead>
 							<tbody>
 							{{#mip_lista_prezentow}}
 								<tr>
-									<td><a href="{{LINK}}">{{NAME}}</a></td>
-									<td>{{DESCRIPTION}}</td>
-									<td id="{{ID}}">
-										<button type="button" class="btn btn-primary btn-md reserve" {{^ISFREE}}disabled{{/ISFREE}}>Rezerwuj</button>
-										<button type="button" class="btn btn-danger btn-md unreserve">Usuń</button>
+									<td class="col-sm-3 col-md-3 col-lg-3"><a href="{{LINK}}">{{NAME}}</a></td>
+									<td class="col-sm-5 col-md-5 col-lg-5 hidden-xs">{{DESCRIPTION}}</td>
+									<td class="col-sm-1 col-md-1 col-lg-1">{{COMMENT1}}&nbsp;zł</td>
+									<td class="col-sm-3 col-md-3 col-lg-3">
+										<div class="btn-toolbar" role="group" id="{{ID}}">
+											<button type="button" class="btn btn-primary btn-md reserve" {{^ISFREE}}disabled{{/ISFREE}}>Rezerwuj</button>
+											<button type="button" class="btn btn-danger btn-md unreserve">Usuń</button>
+										</div>
 									</td>
 								</tr>
 							{{/mip_lista_prezentow}}

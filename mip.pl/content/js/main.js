@@ -48,11 +48,11 @@ function php_crud_api_transform(tables) {
 
 function GiftList(element, template) {
 	var self = this;
-	var url = '../cgi/api.php/mip_lista_prezentow';
+	var url = 'http://www.mariaipawel.pl/cgi/api.php/mip_lista_prezentow';
 	self.reserve = function() {
 		if (isCookieSet() == false) {
-			var td = $(this).parent('td');
-			var id = td.attr("id");
+			var div = $(this).parent('div');
+			var id = div.attr("id");
 			var reservationsource = 'temporary';
 			var reservationdate = Date.now();
 			var content = '{"ISFREE":0, "RESERVATIONSOURCE": "'
@@ -69,12 +69,12 @@ function GiftList(element, template) {
 				setCookie(id);
 			}
 		} else {
-			alert("Rezerwuj pojedyńczo")
+			alert("Można zarezerwować jeden prezent")
 		}
 	};
 	self.unreserve = function() {
-		var td = $(this).parent('td');
-		var id = td.attr("id");
+		var div = $(this).parent('div');
+		var id = div.attr("id");
 		var check_id = getCookie("mip_cookie");
 		if (check_id == id) {
 			var content = '{"ISFREE":1, "RESERVATIONSOURCE": "", "RESERVATIONDATE":""}'
@@ -99,7 +99,7 @@ function GiftList(element, template) {
 		var id = getCookie("mip_cookie");
 		var elems = document.getElementsByClassName("unreserve");
 		for (var i = 0; i < elems.length; i++) {
-			var parent = $(elems[i]).parent('td');
+			var parent = $(elems[i]).parent('div');
 			if (parent.attr("id") != id)
 				elems[i].disabled = true;
 		}

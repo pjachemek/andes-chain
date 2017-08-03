@@ -48,7 +48,7 @@ function php_crud_api_transform(tables) {
 
 function GiftList(element, template) {
 	var self = this;
-	var url = '../cgi/api.php/mip_lista_prezentow';
+	var url = '../cgi/api.php/mip_lista_prezentow?order=NAME,asc';
 	self.reserve = function() {
 		if (isCookieSet() == false) {
 			var div = $(this).parent('div');
